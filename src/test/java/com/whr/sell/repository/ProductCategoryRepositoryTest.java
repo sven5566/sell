@@ -1,7 +1,8 @@
-package com.whr.sell;
+package com.whr.sell.repository;
 
 import com.whr.sell.dataobject.ProductCategory;
 import com.whr.sell.repository.ProductCategoryRepository;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -16,7 +17,6 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProductCategoryRepositoryTest {
-    Logger logger= LoggerFactory.getLogger(ProductCategoryRepository.class);
 
     @Autowired
     ProductCategoryRepository productCategoryRepository;
@@ -25,23 +25,24 @@ public class ProductCategoryRepositoryTest {
     public void saveTest(){
         ProductCategory productCategory=new ProductCategory("test2",3);
         productCategoryRepository.save(productCategory);
+        Assert.assertNotNull(productCategory);
     }
 
     @Test
     public void testFindAll(){
         List<ProductCategory> all = productCategoryRepository.findAll();
-        logger.error("all=="+all);
+        Assert.assertNotEquals(0,all.size());
     }
 
     @Test
     public void findOneTest() {
         ProductCategory productCategory = productCategoryRepository.findOne(1);
-        System.out.println(productCategory.toString());
+        Assert.assertNotNull(productCategory);
     }
     @Test
     public void testFindList() {
         List<Integer> list= Arrays.asList(1,4);
         List<ProductCategory> resultList = productCategoryRepository.findByCategoryTypeIn(list);
-        System.out.println(resultList);
+        Assert.assertNotEquals(0,resultList.size());
     }
 }

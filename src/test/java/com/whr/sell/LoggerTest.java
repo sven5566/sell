@@ -1,5 +1,6 @@
 package com.whr.sell;
 
+import com.whr.sell.dataobject.ProductCategory;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Log
 public class LoggerTest {
     private final Logger logger= LoggerFactory.getLogger(Logger.class);
 
@@ -20,5 +22,8 @@ public class LoggerTest {
         logger.debug("debug...{}--istest..{}","asbk","test2");
         logger.info("info...{}--istest..{}","asbk","test2");
         logger.error("error");
+        ProductCategory productCategory=new ProductCategory();
+        final String categoryName = productCategory.getCategoryName();
+        log.info(categoryName+"22"+productCategory.toString());
     }
 }
