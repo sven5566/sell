@@ -5,6 +5,8 @@ import com.whr.sell.enums.ProductStatusEnum;
 import com.whr.sell.repository.ProductInfoRepository;
 import com.whr.sell.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +35,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductInfo save(ProductInfo productInfo) {
         return repository.save(productInfo);
+    }
+
+    @Override
+    public Page<ProductInfo> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 }
