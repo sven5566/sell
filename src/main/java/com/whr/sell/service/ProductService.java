@@ -1,7 +1,7 @@
 package com.whr.sell.service;
 
-import com.whr.sell.dataobject.ProductCategory;
 import com.whr.sell.dataobject.ProductInfo;
+import com.whr.sell.dto.CartDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,4 +13,6 @@ public interface ProductService {
     List<ProductInfo> findUpAll();
     ProductInfo save(ProductInfo productInfo);
     Page<ProductInfo> findAll(Pageable pageable);
+    public void increaseStock(List<CartDTO> cartDTOList) ;
+    public void decreaseStock(List<CartDTO> cartDTOList) ;
 }
